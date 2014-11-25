@@ -40,3 +40,6 @@ gem 'spring',        group: :development
 
 # Twitter bootstrap
 gem "twitter-bootstrap-rails"
+
+# Easy to use interface for administration
+gem "rails_admin"
