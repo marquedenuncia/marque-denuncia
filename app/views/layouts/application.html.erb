@@ -7,9 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= nav_bar :static => :top, :responsive => true do %>
+  <%= nav_bar :static => :top, :brand => 'Marque Denúncia', :responsive => true do %>
     <%= menu_group do %>
       <%= menu_item "Users", users_path %>
+      <%= menu_item "About us", welcome_about_url %>
     <% end %>
   <% end %>
 
