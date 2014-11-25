@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MarqueDenuncia</title>
+  <title>Marque Denuncia</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= nav_bar :static => :top, :responsive => true do %>
+    <%= menu_group do %>
+      <%= menu_item "Users", users_path %>
+    <% end %>
+  <% end %>
 
-<%= yield %>
+  <div class="container">
+    <div class="row">
+      <div class="span9"><%= yield %></div>
+    </div>
+  </div>
 
 </body>
 </html>
