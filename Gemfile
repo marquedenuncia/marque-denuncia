@@ -40,3 +40,6 @@ gem 'spring',        group: :development
 
 # Twitter bootstrap
 gem "twitter-bootstrap-rails"
+
+# Authentication
+gem 'devise'

@@ -12,8 +12,20 @@
       <%= menu_item "Users", users_path %>
       <%= menu_item "About us", welcome_about_url %>
     <% end %>
+
+    <%= menu_group :pull => :right do %>
+        <% if user_signed_in? %>
+          <%= menu_text "Signed in as #{current_user.first_name}" %>
+          <%= menu_item "Sign out", destroy_user_session_path, :method => :delete %>
+        <% else %>
+          <%= menu_item "Sign up", new_user_registration_path %>
+          <%= menu_item "Sign in", new_user_session_path %>
+        <% end %>
+    <% end %>
+
   <% end %>
 
+  <%= render 'layouts/messages' %>
   <div class="container">
     <div class="row">
       <div class="span9"><%= yield %></div>
