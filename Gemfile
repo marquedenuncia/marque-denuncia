@@ -43,3 +43,6 @@ gem "twitter-bootstrap-rails"
 
 # Easy to use interface for administration
 gem "rails_admin"
+
+# Authentication
+gem 'devise'

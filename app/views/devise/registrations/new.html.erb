@@ -1,24 +1,13 @@
-<%= form_for @user, :html => { :class => "form-horizontal user" } do |f| %>
+<%= devise_error_messages! %>
 
-    <% if @user.errors.any? %>
-    <div id="error_expl" class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
   <div class="control-group">
     <%= f.label :username, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :username, :class => 'form-control' %>
+      <%= f.text_field :username, :class => 'form-control', autofocus: true %>
     </div>
     <%= error_span(@user[:username]) %>
   </div>
@@ -72,8 +61,25 @@
     <%= error_span(@user[:admin]) %>
   </div>
 
-  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <div class="field">
+    <%= f.label :password %>
+    <% if @validatable %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+  <%= f.submit "Sign up", :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
             users_path, :class => 'btn btn-default' %>
 
+  </div>
 <% end %>
+
+<%= render "devise/shared/links" %>
