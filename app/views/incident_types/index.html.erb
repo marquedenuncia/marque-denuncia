@@ -1,25 +1,36 @@
-<h1>Listing incident_types</h1>
-
-<table>
+<%- model_class = IncidentType -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Description</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @incident_types.each do |incident_type| %>
       <tr>
+        <td><%= link_to incident_type.id, incident_type_path(incident_type) %></td>
         <td><%= incident_type.description %></td>
-        <td><%= link_to 'Show', incident_type %></td>
-        <td><%= link_to 'Edit', edit_incident_type_path(incident_type) %></td>
-        <td><%= link_to 'Destroy', incident_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l incident_type.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_incident_type_path(incident_type), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      incident_type_path(incident_type),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Incident type', new_incident_type_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_incident_type_path,
+            :class => 'btn btn-primary' %>
