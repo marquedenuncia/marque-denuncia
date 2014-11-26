@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126121435) do
+ActiveRecord::Schema.define(version: 20141126132053) do
 
   create_table "incident_types", force: true do |t|
     t.string   "description", limit: 30, default: "", null: false
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20141126121435) do
 
   add_index "incidents", ["incident_type_id"], name: "index_incidents_on_incident_type_id"
   add_index "incidents", ["user_id"], name: "index_incidents_on_user_id"
+
+  create_table "supports", force: true do |t|
+    t.integer  "incident_id", null: false
+    t.integer  "user_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "supports", ["incident_id"], name: "index_supports_on_incident_id"
+  add_index "supports", ["user_id"], name: "index_supports_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "username",              default: "",  null: false
