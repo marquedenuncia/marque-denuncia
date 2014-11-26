@@ -39,9 +39,16 @@
   <div class="control-group">
     <%= f.label :birth, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :birth, :class => 'form-control' %>
+      <%= f.date_select :birth, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:birth]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :gender, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :gender, [['Female','F'],['Male','M'],['Other','O']], :class => 'form-control' %>
+    </div>
+    <%= error_span(@user[:gender]) %>
   </div>
   <div class="control-group">
     <%= f.label :cpf, :class => 'control-label' %>
@@ -53,18 +60,17 @@
   <div class="control-group">
     <%= f.label :email, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :email, :class => 'form-control' %>
+      <%= f.email_field :email, :class => 'form-control' %>
     </div>
     <%= error_span(@user[:email]) %>
   </div>
   <div class="control-group">
     <%= f.label :admin, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :admin, :class => 'form-control' %>
+      <%= f.check_box :admin, :class => 'checkbox' %>
     </div>
     <%= error_span(@user[:admin]) %>
   </div>
-
 
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
