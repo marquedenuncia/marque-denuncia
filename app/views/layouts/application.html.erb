@@ -16,6 +16,7 @@
     <%= menu_group :pull => :right do %>
         <% if user_signed_in? %>
           <%= menu_text "Signed in as #{current_user.first_name}" %>
+          <%= menu_item "Administration", rails_admin.dashboard_path if current_user.admin? %>
           <%= menu_item "Sign out", destroy_user_session_path, :method => :delete %>
         <% else %>
           <%= menu_item "Sign up", new_user_registration_path %>
