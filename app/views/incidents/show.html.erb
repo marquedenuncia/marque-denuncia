@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @incident.user %>
+</p>
+
+<p>
+  <strong>Incident type:</strong>
+  <%= @incident.incident_type %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @incident.description %>
+</p>
+
+<p>
+  <strong>View count:</strong>
+  <%= @incident.view_count %>
+</p>
+
+<%= link_to 'Edit', edit_incident_path(@incident) %> |
+<%= link_to 'Back', incidents_path %>
