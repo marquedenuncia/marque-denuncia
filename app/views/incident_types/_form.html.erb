@@ -1,21 +1,31 @@
-<%= form_for(@incident_type) do |f| %>
-  <% if @incident_type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@incident_type.errors.count, "error") %> prohibited this incident_type from being saved:</h2>
+<%= form_for @incident_type, :html => { :class => "form-horizontal incident_type" } do |f| %>
 
-      <ul>
-      <% @incident_type.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @incident_type.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@incident_type.errors.count, "error") %> prohibited this incident_type from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @incident_type.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description, :class => 'form-control' %>
+    </div>
+    <%= error_span(@incident_type[:description]) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            incident_types_path, :class => 'btn btn-default' %>
+
 <% end %>

@@ -1,14 +1,20 @@
 class User < ActiveRecord::Base
+
+  has_many :comments
+  has_many :incidents
+  has_many :supports
+  has_many :backings, through: :supports, source: :incident
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
-  validates :username, :first_name, :last_name, :cpf, :birth, :gender, :email, presence: true
+  validates :username, :first_name, :last_name, :cpf, :birth, :gender, presence: true
   validates :gender, inclusion: { in: %w( F M O ) }
   validates :first_name, :last_name, length: { maximum: 30 }
-  validates :cpf, format: { with: /\A(\d{3}\.?\d{3}\.?\d{3})-?(\d{2})\Z/i, on: :create }
+  validates :cpf, uniqueness: true, format: { with: /\A(\d{3}\.?\d{3}\.?\d{3})-?(\d{2})\Z/i, on: :create }
   validates :email, uniqueness: { case_sensitive: false }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create }
   validates :username, uniqueness: { case_sensitive: false }, format: { with: /\A[-a-z0-9]+\Z/i, on: :create }
 

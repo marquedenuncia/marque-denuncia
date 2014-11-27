@@ -1,6 +1,5 @@
-<h1>Editing incident_type</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @incident_type %> |
-<%= link_to 'Back', incident_types_path %>
+<%- model_class = IncidentType -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<%= render :partial => 'form' %>
