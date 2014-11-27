@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(username: 'admin', first_name: 'Icaro', last_name: 'Jerry', birth: Date.today, gender: 'M', cpf: '000.000.000-00', admin: true, email: 'test1@localhost.localdomain', password: '11111111', password_confirmation: '11111111')
+User.create(username: 'admin', first_name: 'Icaro', last_name: 'Jerry', birth: Date.today, gender: 'M', cpf: '000.000.000-00', admin: true, email: 'test1@localhost.localdomain', password: '11111111', password_confirmation: '11111111').confirm!
 
 incident_types = ['Lesão Corporal', 'Estupro', 'Destruição de bens/documentos',
                   'Calúnia, difamação e injúria', 'Assédio Sexual',
