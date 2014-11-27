@@ -13,12 +13,12 @@ class IncidentsController < ApplicationController
   def show
     @comments = @incident.comments.all
     @comment = @incident.comments.build
-    @comment.user = current_user
   end
 
   # GET /incidents/new
   def new
     @incident = Incident.new
+    @incident_types = IncidentType.type_names
   end
 
   # GET /incidents/1/edit
@@ -29,12 +29,14 @@ class IncidentsController < ApplicationController
   # POST /incidents.json
   def create
     @incident = Incident.new(incident_params)
+    @incident.user = current_user
 
     respond_to do |format|
       if @incident.save
         format.html { redirect_to @incident, notice: 'Incident was successfully created.' }
         format.json { render :show, status: :created, location: @incident }
       else
+        @incident_types = IncidentType.type_names
         format.html { render :new }
         format.json { render json: @incident.errors, status: :unprocessable_entity }
       end
@@ -73,6 +75,6 @@ class IncidentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def incident_params
-      params.require(:incident).permit(:user_id, :incident_type_id, :description, :view_count)
+      params.require(:incident).permit(:user_id, :incident_type_id, :anonymous, :description, :view_count)
     end
 end

@@ -5,9 +5,9 @@
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @incident.user_id %></dd>
+  <dd><%= @incident.anonymous? ? "Anonymous" : @incident.user.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:incident_type_id) %>:</strong></dt>
-  <dd><%= @incident.incident_type_id %></dd>
+  <dd><%= @incident.incident_type.description %></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @incident.description %></dd>
 </dl>

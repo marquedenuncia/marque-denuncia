@@ -46,7 +46,7 @@
   <div class="control-group">
     <%= f.label :gender, :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :gender, [['Female','F'],['Male','M'],['Other','O']], :class => 'form-control' %>
+      <%= f.select :gender, options_for_select(gender_options), :class => 'form-control' %>
     </div>
     <%= error_span(@user[:gender]) %>
   </div>

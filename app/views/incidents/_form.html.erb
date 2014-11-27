@@ -16,16 +16,9 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :user_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :user_id, :class => 'form-control' %>
-    </div>
-    <%= error_span(@incident[:user_id]) %>
-  </div>
-  <div class="control-group">
     <%= f.label :incident_type_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :incident_type_id, :class => 'form-control' %>
+      <%= f.select :incident_type_id, options_for_select(@incident_types), :class => 'form-control' %>
     </div>
     <%= error_span(@incident[:incident_type_id]) %>
   </div>
@@ -35,6 +28,13 @@
       <%= f.text_field :description, :class => 'form-control' %>
     </div>
     <%= error_span(@incident[:description]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :anonymous, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :anonymous, {:class => 'checkbox'}, "true", "false" %>
+    </div>
+    <%= error_span(@incident[:anonymous]) %>
   </div>
 
 
