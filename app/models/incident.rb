@@ -9,4 +9,18 @@ class Incident < ActiveRecord::Base
   has_many :comments
   has_many :supports
   has_many :supporters, through: :supports, source: :user
+
+  def address
+    self.establishment && self.establishment.address
+  end
+
+  def address=(newaddress)
+    unless newaddress.blank?
+      self.establishment = if establishment = Establishment.find_by(:address => newaddress)
+                             establishment
+                           else
+                             Establishment.create(:address => newaddress)
+                           end
+    end
+  end
 end
