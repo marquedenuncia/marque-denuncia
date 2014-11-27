@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126135614) do
+ActiveRecord::Schema.define(version: 20141126161104) do
 
   create_table "comments", force: true do |t|
-    t.integer  "user_id",                  null: false
-    t.integer  "incident_id",              null: false
-    t.text     "description", default: "", null: false
+    t.integer  "user_id",                     null: false
+    t.integer  "incident_id",                 null: false
+    t.text     "description", default: "",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "anonymous",   default: false, null: false
   end
 
   add_index "comments", ["incident_id"], name: "index_comments_on_incident_id"
@@ -33,10 +34,11 @@ ActiveRecord::Schema.define(version: 20141126135614) do
   create_table "incidents", force: true do |t|
     t.integer  "user_id"
     t.integer  "incident_type_id"
-    t.string   "description",      limit: 1000, default: "", null: false
-    t.integer  "view_count",                    default: 0,  null: false
+    t.string   "description",      limit: 1000, default: "",    null: false
+    t.integer  "view_count",                    default: 0,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "anonymous",                     default: false, null: false
   end
 
   add_index "incidents", ["incident_type_id"], name: "index_incidents_on_incident_type_id"
