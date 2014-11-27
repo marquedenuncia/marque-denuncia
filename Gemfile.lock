@@ -48,6 +48,7 @@ GEM
     execjs (2.2.2)
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
+    geocoder (1.2.6)
     haml (4.0.5)
       tilt
     hike (1.2.3)
@@ -176,6 +177,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
+  geocoder
   jbuilder (~> 2.0)
   jquery-rails
   pg

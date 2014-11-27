@@ -50,3 +50,6 @@ gem "rails_admin"
 
 # Authentication
 gem 'devise'
+
+# Localization
+gem 'geocoder'

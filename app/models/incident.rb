@@ -3,7 +3,7 @@ class Incident < ActiveRecord::Base
   belongs_to :incident_type
   belongs_to :establishment
   
-  validates :description, :user, :incident_type, presence: true
+  validates :description, :user, :incident_type, :establishment, presence: true
   validates :description, length: { maximum: 1000 }
 
   has_many :comments
