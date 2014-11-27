@@ -15,31 +15,23 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :user_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :user_id, :class => 'form-control' %>
-    </div>
-    <%= error_span(@comment[:user_id]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :incident_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :incident_id, :class => 'form-control' %>
-    </div>
-    <%= error_span(@comment[:incident_id]) %>
-  </div>
+  <%= f.hidden_field :incident_id %>
+  <%= f.hidden_field :user_id %>
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :description, :class => 'form-control' %>
+      <%= f.text_area :description, {:rows => 7, :class => 'text'} %>
     </div>
     <%= error_span(@comment[:description]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :anonymous, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :anonymous, {:class => 'checkbox'}, "true", "false" %>
+    </div>
+    <%= error_span(@comment[:anonymous]) %>
   </div>
 
 
   <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            comments_path, :class => 'btn btn-default' %>
-
 <% end %>

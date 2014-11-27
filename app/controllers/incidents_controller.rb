@@ -1,5 +1,6 @@
 class IncidentsController < ApplicationController
   before_action :set_incident, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /incidents
   # GET /incidents.json
@@ -10,6 +11,9 @@ class IncidentsController < ApplicationController
   # GET /incidents/1
   # GET /incidents/1.json
   def show
+    @comments = @incident.comments.all
+    @comment = @incident.comments.build
+    @comment.user = current_user
   end
 
   # GET /incidents/new
