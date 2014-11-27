@@ -12,6 +12,15 @@
   <dd><%= @incident.description %></dd>
 </dl>
 
+<% if user_signed_in? %>
+  <h3>Insert your comment</h3>
+  <%= render 'comments/form' %>
+<% end %>
+
+<% if @comments.present? %>
+  <%= render 'comments/comments_list' %>
+<% end %>
+
 <%= link_to t('.back', :default => t("helpers.links.back")),
               incidents_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
