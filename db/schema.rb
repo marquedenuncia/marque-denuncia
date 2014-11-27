@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141126161104) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: true do |t|
     t.integer  "user_id",                     null: false
     t.integer  "incident_id",                 null: false
@@ -22,8 +25,8 @@ ActiveRecord::Schema.define(version: 20141126161104) do
     t.boolean  "anonymous",   default: false, null: false
   end
 
-  add_index "comments", ["incident_id"], name: "index_comments_on_incident_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["incident_id"], name: "index_comments_on_incident_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "incident_types", force: true do |t|
     t.string   "description", limit: 30, default: "", null: false
@@ -41,8 +44,8 @@ ActiveRecord::Schema.define(version: 20141126161104) do
     t.boolean  "anonymous",                     default: false, null: false
   end
 
-  add_index "incidents", ["incident_type_id"], name: "index_incidents_on_incident_type_id"
-  add_index "incidents", ["user_id"], name: "index_incidents_on_user_id"
+  add_index "incidents", ["incident_type_id"], name: "index_incidents_on_incident_type_id", using: :btree
+  add_index "incidents", ["user_id"], name: "index_incidents_on_user_id", using: :btree
 
   create_table "supports", force: true do |t|
     t.integer  "incident_id", null: false
@@ -51,8 +54,8 @@ ActiveRecord::Schema.define(version: 20141126161104) do
     t.datetime "updated_at"
   end
 
-  add_index "supports", ["incident_id"], name: "index_supports_on_incident_id"
-  add_index "supports", ["user_id"], name: "index_supports_on_user_id"
+  add_index "supports", ["incident_id"], name: "index_supports_on_incident_id", using: :btree
+  add_index "supports", ["user_id"], name: "index_supports_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username",                          default: "",    null: false
@@ -80,7 +83,7 @@ ActiveRecord::Schema.define(version: 20141126161104) do
     t.string   "unconfirmed_email"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
