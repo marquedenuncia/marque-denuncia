@@ -8,11 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= nav_bar :static => :top, :brand => 'Marque Denúncia', :responsive => true do %>
-    <%= menu_group do %>
-      <%= menu_item "Users", users_path %>
-      <%= menu_item "About us", welcome_about_url %>
-    <% end %>
+  <%= nav_bar :fixed => :top, :brand => 'Marque Denúncia', :responsive => true do %>
 
     <%= menu_group :pull => :right do %>
         <% if user_signed_in? %>
@@ -20,19 +16,36 @@
           <%= menu_item "Administration", rails_admin.dashboard_path if current_user.admin? %>
           <%= menu_item "Sign out", destroy_user_session_path, :method => :delete %>
         <% else %>
-          <%= menu_item "Sign up", new_user_registration_path %>
+          <%= menu_item "Join Us", new_user_registration_path %>
           <%= menu_item "Sign in", new_user_session_path %>
         <% end %>
     <% end %>
 
   <% end %>
 
-  <%= render 'layouts/messages' %>
   <div class="container">
     <div class="row">
+      <%= bootstrap_flash %>
       <div class="span9"><%= yield %></div>
     </div>
+    <p></p>
   </div>
+  <footer class="footer">
+    <div class="container">
+      <div class='clique pull-left'>
+        <p>Conheça o:</p>
+        <%= link_to image_tag('clique180-logo.png'),'http://clique180.org.br/' %>
+      </div>
+      <div class='pull-right'>
+        <p>
+          <a href='#'>Políticas de privacidade</a>
+        </p>
+        <p>
+          <a href='#'>Sobre o Marque Denúncia</a>
+        </p>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

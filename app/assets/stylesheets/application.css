@@ -13,3 +13,47 @@
  *= require_tree .
  *= require_self
  */
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+  /*background: #f5f5f5 url("clique180-logo.png") no-repeat fixed;*/
+}
+
+body > .container {
+  padding: 60px 15px 0;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.footer > .container p {
+  font-size: smaller;
+  margin: 3px 0 0 0;
+}
+
+.footer > .container .pull-right {
+  text-align: right;
+}
+
+.footer > .container > div.clique img {
+  height: 35px;
+}
