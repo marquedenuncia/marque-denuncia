@@ -32,6 +32,22 @@
   </div>
 
   <div class="control-group">
+    <%= f.label :date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_field :date, :class => 'form-control' %>
+    </div>
+    <%= error_span(@incident[:date]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :time, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.time_field :time, :class => 'form-control' %>
+    </div>
+    <%= error_span(@incident[:time]) %>
+  </div>
+
+  <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :description, :class => 'form-control' %>
