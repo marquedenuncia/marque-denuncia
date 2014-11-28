@@ -21,7 +21,7 @@ html {
 }
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  margin-bottom: 60px !important;
 }
 .footer {
   position: absolute;
@@ -30,7 +30,6 @@ body {
   /* Set the fixed height of the footer here */
   height: 60px;
   background-color: #f5f5f5;
-  /*background: #f5f5f5 url("clique180-logo.png") no-repeat fixed;*/
 }
 
 body > .container {
@@ -57,3 +56,22 @@ body > .container {
 .footer > .container > div.clique img {
   height: 35px;
 }
+
+.navbar-default {
+  background-color: #36d194 !important;
+  border-color: #ff875a !important;
+}
+
+.navbar-fixed-top {
+  border-width: 0px 0px 2px !important;
+}
+
+.navbar {
+  min-height: 65px;
+}
+
+.navbar-brand img {
+  margin-top: -5px;
+  width: 300px;
+}
+

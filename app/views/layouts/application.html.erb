@@ -4,11 +4,12 @@
   <%= favicon_link_tag 'md-pointer.ico'%>
   <title>Marque Denuncia</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'metro', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= nav_bar :fixed => :top, :brand => 'Marque Denúncia', :responsive => true do %>
+  <%= nav_bar :fixed => :top, :brand => image_tag('md-logo-name.png'), :responsive => true do %>
 
     <%= menu_group :pull => :right do %>
         <% if user_signed_in? %>
