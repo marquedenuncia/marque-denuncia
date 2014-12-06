@@ -17,8 +17,10 @@
           <%= menu_item "Administration", rails_admin.dashboard_path if current_user.admin? %>
           <%= menu_item "Sign out", destroy_user_session_path, :method => :delete %>
         <% else %>
-          <%= menu_item "Join Us", new_user_registration_path %>
-          <%= menu_item "Sign in", new_user_session_path %>
+          <!--<%= menu_item "Join Us", new_user_registration_path %>
+          <%= menu_item "Sign in", new_user_session_path %>-->
+          <%= menu_item "Join Us" %>
+          <%= menu_item "Sign in" %>
         <% end %>
     <% end %>
 
@@ -39,10 +41,10 @@
       </div>
       <div class='pull-right'>
         <p>
-          <a href='#'>Políticas de privacidade</a>
+          <a href='welcome/about.html'>Políticas de privacidade</a>
         </p>
         <p>
-          <a href='#'>Sobre o Marque Denúncia</a>
+          <a href='welcome/about.html'>Sobre o Marque Denúncia</a>
         </p>
       </div>
     </div>
